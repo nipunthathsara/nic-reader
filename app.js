@@ -18,9 +18,13 @@ app.get('/home', function(request,response){
 
 app.post('/api/nicProcess', function(request, response){
     console.log("inpost");
-    //var data = request;
-    //console.log(data.toString());
-    console.log(request.body.nicData);
+    //console.log(request.body.nicData);
+    var nicNumber = request.body.nicData.toString();
+    processor(nicNumber);
     
     response.send(request.body.nicData);
 });
+
+function processor (nicNumber){
+    console.log(Number(nicNumber)+1);
+};
