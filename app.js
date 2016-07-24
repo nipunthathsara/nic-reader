@@ -20,7 +20,7 @@ app.post('/api/nicProcess', function(request, response){
     console.log("inpost");
     //console.log(request.body.nicData);
     var nicNumber = request.body.nicData.toString();
-    processor(nicNumber);
+    return details = processor(nicNumber);
     
     response.send(request.body.nicData);
 });
@@ -32,7 +32,9 @@ function processor (nicNumber){
     console.log(birthYear);
     var gender = (((Number)(nicNumber.substring(2,5))) > 500 ? "female" : "male");
     console.log(gender); 
-    birthdateCalculator((Number)(nicNumber.substring(2,5)), birthYear);
+    var birthDay = birthdateCalculator((Number)(nicNumber.substring(2,5)), birthYear);
+    
+    console.log(birthDay);
 }
 
 function birthdateCalculator(date, birthYear){
@@ -42,7 +44,12 @@ function birthdateCalculator(date, birthYear){
     var initDate = new Date(birthYear, 0); 
     var birthday =  new Date(initDate.setDate(date));
     
-    console.log(birthday);
+    if(!isLeap(birthYear) && date > 59){
+        birthday.setDate(birthday.getDate() - 1);
+    }
+    
+    //console.log(birthday);
+    return birthday;
 }
 
 function isLeap(birthYear)
