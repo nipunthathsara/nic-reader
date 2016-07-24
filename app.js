@@ -26,5 +26,25 @@ app.post('/api/nicProcess', function(request, response){
 });
 
 function processor (nicNumber){
-    console.log(Number(nicNumber)+1);
-};
+    //console.log(Number(nicNumber)+1);
+    var birthYear = nicNumber.substring(0,2);
+    birthYear = ("19" + birthYear);
+    console.log(birthYear);
+    var gender = (((Number)(nicNumber.substring(2,5))) > 500 ? "female" : "male");
+    console.log(gender); 
+    birthdateCalculator((Number)(nicNumber.substring(2,5)), birthYear);
+}
+
+function birthdateCalculator(date, birthYear){
+    console.log(date);
+    if(leapYear(birthYear)){
+        console.log("true");
+    }else{
+        console.log("false");
+    }
+}
+
+function leapYear(year)
+{
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
