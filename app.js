@@ -36,15 +36,16 @@ function processor (nicNumber){
 }
 
 function birthdateCalculator(date, birthYear){
+    if(date > 500){date = date-500};
     console.log(date);
-    if(leapYear(birthYear)){
-        console.log("true");
-    }else{
-        console.log("false");
-    }
+    
+    var initDate = new Date(birthYear, 0); 
+    var birthday =  new Date(initDate.setDate(date));
+    
+    console.log(birthday);
 }
 
-function leapYear(year)
+function isLeap(birthYear)
 {
-  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+  return ((birthYear % 4 == 0) && (birthYear % 100 != 0)) || (birthYear % 400 == 0);
 }
