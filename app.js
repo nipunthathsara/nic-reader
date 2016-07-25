@@ -34,9 +34,15 @@ function processor (nicNumber){
     console.log(gender); 
     var birthDay = birthdateCalculator((Number)(nicNumber.substring(2,5)), birthYear);
     //console.log(birthDay);
-    //var test = birthDay.getFullYear();
-    var text = '{"birthyear":"' + birthDay.getFullYear() + '","birthmonth":"' + birthDay.getMonth() + '","birthdate":"' + birthDay.getDay() + '", "gender":"' + gender + '"}';
-    //console.log(test);
+    var test = birthDay.getFullYear();
+    console.log(test);
+    var test = birthDay.getMonth();
+    console.log(test);
+    var test = birthDay.getDay();
+    console.log(test);
+    console.log(birthDay);
+    var text = '{"birthyear":"' + birthDay.getFullYear() + '","birthmonth":"' + (birthDay.getMonth()+1) + '","birthdate":"' + birthDay.getDate() + '", "gender":"' + gender + '"}';
+    
     var obj = JSON.parse(text);
     //console.log(JSON.stringify(obj));
     return obj;
